@@ -5,13 +5,13 @@
   "packageManager": "pnpm@7.1.1",
   "description": "\"Lazy\" Tree shake dynamic imports",
   "license": "MIT",
-  "homepage": "https://github.com/antfu/unplugin-starter#readme",
+  "homepage": "https://github.com/logotip4ik/unplugin-ltsdi#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/unplugin-starter.git"
+    "url": "git+https://github.com/logotip4ik/unplugin-ltsdi.git"
   },
   "bugs": {
-    "url": "https://github.com/antfu/unplugin-starter/issues"
+    "url": "https://github.com/logotip4ik/unplugin-ltsdi/issues"
   },
   "keywords": [
     "unplugin",
