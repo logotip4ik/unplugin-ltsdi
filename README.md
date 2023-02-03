@@ -1,28 +1,22 @@
-# unplugin-starter
+# unplugin-ltsdi
 
-[![NPM version](https://img.shields.io/npm/v/unplugin-starter?color=a1b858&label=)](https://www.npmjs.com/package/unplugin-starter)
+[Rollup still does not tree shake dynamic imports](https://github.com/rollup/rollup/issues/3447) (so vite as well), and fix is pretty simple - to create another file which will reexport functions that are needed. But i am too lazy, so i created this. 
 
-Starter template for [unplugin](https://github.com/unjs/unplugin).
+> TL;DR   
+> import("comlink?only=wrap,expose,\<whatever>")
 
-## Template Usage
+This will create file which exports what you specified in `only` param, like this:
 
-To use this template, clone it down using:
-
-```bash
-npx degit antfu/unplugin-starter my-unplugin
+```js
+export { wrap, expose } from 'comlink'
 ```
 
-And do a global replace of `unplugin-starter` with your plugin name.
-
-Then you can start developing your unplugin 🔥
-
-To test your plugin, run: `pnpm run dev`
-To release a new version, run: `pnpm run release`
+On build rollup will tree shake that "file" and dynamic import won't weight as much as whole library 
 
 ## Install
 
 ```bash
-npm i unplugin-starter
+npm i unplugin-ltsdi
 ```
 
 <details>
@@ -30,11 +24,11 @@ npm i unplugin-starter
 
 ```ts
 // vite.config.ts
-import Starter from 'unplugin-starter/vite'
+import LTSDI from 'unplugin-ltsdi/vite'
 
 export default defineConfig({
   plugins: [
-    Starter({ /* options */ }),
+    LTSDI({ /* options */ }),
   ],
 })
 ```
@@ -48,11 +42,11 @@ Example: [`playground/`](./playground/)
 
 ```ts
 // rollup.config.js
-import Starter from 'unplugin-starter/rollup'
+import LTSDI from 'unplugin-ltsdi/rollup'
 
 export default {
   plugins: [
-    Starter({ /* options */ }),
+    LTSDI({ /* options */ }),
   ],
 }
 ```
@@ -68,7 +62,7 @@ export default {
 module.exports = {
   /* ... */
   plugins: [
-    require('unplugin-starter/webpack')({ /* options */ })
+    require('unplugin-ltsdi/webpack')({ /* options */ })
   ]
 }
 ```
@@ -82,7 +76,7 @@ module.exports = {
 // nuxt.config.js
 export default {
   buildModules: [
-    ['unplugin-starter/nuxt', { /* options */ }],
+    ['unplugin-ltsdi/nuxt', { /* options */ }],
   ],
 }
 ```
@@ -99,7 +93,7 @@ export default {
 module.exports = {
   configureWebpack: {
     plugins: [
-      require('unplugin-starter/webpack')({ /* options */ }),
+      require('unplugin-ltsdi/webpack')({ /* options */ }),
     ],
   },
 }
@@ -113,10 +107,10 @@ module.exports = {
 ```ts
 // esbuild.config.js
 import { build } from 'esbuild'
-import Starter from 'unplugin-starter/esbuild'
+import LTSDI from 'unplugin-ltsdi/esbuild'
 
 build({
-  plugins: [Starter()],
+  plugins: [LTSDI()],
 })
 ```
 
