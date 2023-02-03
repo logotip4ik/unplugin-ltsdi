@@ -3,7 +3,8 @@
 [Rollup still does not tree shake dynamic imports](https://github.com/rollup/rollup/issues/3447) (so vite as well), and fix is pretty simple - to create another file which will reexport functions that are needed. But i am too lazy, so i created this. 
 
 > TL;DR   
-> import("comlink?only=wrap,expose,\<whatever>")
+>   
+> `import("comlink?only=wrap,expose,\<whatever>")`
 
 This will create file which exports what you specified in `only` param, like this:
 
