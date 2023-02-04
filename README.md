@@ -116,3 +116,16 @@ build({
 ```
 
 <br></details>
+
+## Typescript / Intellisense
+
+Create a `.d.ts` shim for `?` import like this
+
+```typescript
+// index.d.ts - for example
+
+declare module 'comlink?*' {
+  import comlink from 'comlink'
+  export = comlink
+}
+```
