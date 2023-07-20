@@ -1,7 +1,7 @@
 {
   "name": "unplugin-ltsdi",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@7.1.1",
   "description": "\"Lazy\" Tree shake dynamic imports",
   "license": "MIT",
